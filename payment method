@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import PaystackIntegration from './paymentbutton';
+
+const PaymentPopup = ({ total, cart, onClose }) => {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
+  const [networkProvider, setNetworkProvider] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const handlePaymentMethodClick = (method) => {
+    setSelectedPaymentMethod(method);
+  };
+
+  const handleNetworkProviderChange = (e) => {
+    setNetworkProvider(e.target.value);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = () => {
+    if (phoneNumber.length !== 10) {
+      setError('Phone number must be exactly 10 digits');
+    } else if (!email.includes('@')) {
+      setError('Please enter a valid email');
+    } else {
+      setError('');
+      // Handle the payment submission logic here
+      console.log('Payment submitted', { networkProvider, phoneNumber, email });
+    }
+  };
+
+  const handlePaymentSuccess = (reference) => {
+    console.log('Payment successful', reference);
+    onClose();
+  };
+
+  const productNames = cart.map((item) => item.title).join(', ');
+
+  return (
+    <div className="payment-popup-overlay">
+      <div className="payment-popup">
+        <h2>Payment Methods</h2>
+        <p>Total Amount: GH₵ {total.toFixed(2)}</p>
+
+        {!selectedPaymentMethod && (
+          <>
+            <button className="payment-method" onClick={() => handlePaymentMethodClick('Mobile Money')}>Mobile Money</button>
+            <button className="close-button" onClick={onClose}>Close</button>
+          </>
+        )}
+
+        {selectedPaymentMethod === 'Mobile Money' && (
+          <div className="mobile-money-form">
+            <h3>Mobile Money Payment</h3>
+            <div>
+              <label>Network Provider:</label>
+              <select value={networkProvider} onChange={handleNetworkProviderChange}>
+                <option value="">Select Network</option>
+                <option value="MTN">MTN</option>
+                <option value="TELECEL">TELECEL</option>
+                <option value="AIRTELTIGO">AIRTELTIGO</option>
+              </select>
+            </div>
+            <div>
+              <label>Phone Number:</label>
+              <input
+                type="text"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                maxLength="10"
+                placeholder="Enter 10-digit phone number"
+              />
+            </div>
+            <div>
+              <label>Email:</label>
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="Enter your email"
+              />
+            </div>
+            {error && <p className="error-message">{error}</p>}
+            <PaystackIntegration
+              amount={total}
+              email={email}
+              phoneNumber={phoneNumber}
+              productNames={productNames}
+              onSuccess={handlePaymentSuccess}
+              onClose={onClose}
+            />
+            <button className="close-button" onClick={onClose}>Close</button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default PaymentPopup;
