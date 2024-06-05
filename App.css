@@ -1,0 +1,406 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  padding: 10px;
+  font-size: 80%;
+  transition: background-color 0.3s;
+  z-index: 1000; /* Ensure the navbar is above other content */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+.navbar.scrolled {
+  background-color: #555;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  color: aqua;
+  
+
+}
+.navbar-left span{
+  color:red;
+}
+.logo {
+  width: 20px; /* Adjust the size as needed */
+  height: 20px; /* Adjust the size as needed */
+  margin-right: 5px; /* Adjust the spacing as needed */
+  vertical-align: middle; /* Align the logo with the text */
+}
+
+.navbar-left h3{
+  cursor: pointer;
+}
+.navbar-right {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-links li {
+  display: inline;
+  margin-right: 10px;
+}
+
+.nav-links li:last-child {
+  margin-right: 0; /* Remove margin from the last item */
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.register-btn img.cart-logo {
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Adjust the size as needed */
+}
+
+.register-btn.active img {
+  filter: brightness(0.8); /* Add any active state styles here */
+}
+
+/* Ensure .active class is visually distinguishable */
+.navbar-links .active {
+  border-bottom: 2px solid #ff9800;
+}
+
+.navbar-logo .active {
+  border-bottom: 2px solid #ff9800;
+}
+
+.navbar-logo {
+  height: 30px; /* Adjust the height to fit your design */
+  margin-right: 10px; /* Adjust the margin to fit your design */
+}
+
+
+
+/* Service.css */
+.service-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.product-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card h2 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.product-card p:last-child {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+
+
+/* App.css */
+.cart-container {
+  margin-top: 30px;
+  padding: 2rem;
+  background-color: 	#FFFDD0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cart-item-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 1rem;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-total {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+
+
+.pay-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.pay-button:hover {
+  background-color: #45a049;
+}
+
+.payment-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-popup {
+  background: black;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  color: #f9f9f9;
+}
+
+.payment-method {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.payment-method:hover {
+  background-color: #0056b3;
+}
+
+.close-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+
+.close-button:hover {
+  background-color: #ff1a1a;
+}
+
+
+/* App.css */
+.payment-popup .mobile-money-form {
+  margin-top: 1rem;
+}
+
+.payment-popup .mobile-money-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.payment-popup .mobile-money-form select,
+.payment-popup .mobile-money-form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.payment-popup .error-message {
+  color: red;
+  margin-bottom: 1rem;
+}
+
+.payment-popup .submit-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.payment-popup .submit-button:hover {
+  background-color: #45a049;
+}
+
+/* App.css */
+
+.payment-popup .credit-card-form,
+.payment-popup .mobile-money-form,
+.payment-popup .paypal-form {
+  margin-top: 1rem;
+}
+
+.payment-popup .credit-card-form label,
+.payment-popup .mobile-money-form label,
+.payment-popup .paypal-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.payment-popup .credit-card-form input,
+.payment-popup .mobile-money-form input,
+.payment-popup .mobile-money-form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.payment-popup .error-message {
+  color: red
+}
+
+
+/* App.css */
+.navbar .cart-logo {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.navbar .cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+/* App.css */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.footer {
+  background: #333;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 10px;
+}
+
+.footer-section h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 14px;
+}
